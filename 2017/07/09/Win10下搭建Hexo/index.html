@@ -11,20 +11,20 @@
 <meta property="og:url" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/index.html">
 <meta property="og:site_name" content="Bobo&#39;s Blog">
 <meta property="og:description" content="第一部分，本地环境搭建首先安装Node.js,我安装的是6.11.0Node的下载安装直接去官网就可以了。然后还需要安装git,同样的在官网下载安装，在安装git的过程中我参考了WX_JIN的安装记录。网上大多数Hexo都是和Github page一起搭建，因此还需要一个github账号。安装后上面两个软件后，直接在CMD中输入12node -vgit --version 我的系统环境是win10">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/gitversion.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/githubsetting1.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/githubsetting2.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/openbashhere.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/localhexo.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/newrepository.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/config.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/config2.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/boboblog.jpg">
-<meta property="og:updated_time" content="2017-07-09T04:24:11.218Z">
+<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/gitversion.jpg">
+<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/githubsetting1.jpg">
+<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/githubsetting2.jpg">
+<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/openbashhere.jpg">
+<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/localhexo.jpg">
+<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/newrepository.jpg">
+<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/config.jpg">
+<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/config2.jpg">
+<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/boboblog.jpg">
+<meta property="og:updated_time" content="2017-07-09T06:01:31.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows10搭建Hexo并部署至github page">
 <meta name="twitter:description" content="第一部分，本地环境搭建首先安装Node.js,我安装的是6.11.0Node的下载安装直接去官网就可以了。然后还需要安装git,同样的在官网下载安装，在安装git的过程中我参考了WX_JIN的安装记录。网上大多数Hexo都是和Github page一起搭建，因此还需要一个github账号。安装后上面两个软件后，直接在CMD中输入12node -vgit --version 我的系统环境是win10">
-<meta name="twitter:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/gitversion.jpg">
+<meta name="twitter:image" content="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/gitversion.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Bobo&#39;s Blog" type="application/atom+xml">
   
@@ -64,7 +64,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://cainsyake.github.io"></form>
@@ -97,14 +97,14 @@
       
         <p>第一部分，本地环境搭建<br>首先安装<strong>Node.js</strong>,我安装的是6.11.0<br>Node的下载安装直接去<a href="https://nodejs.org/en/" target="_blank" rel="external">官网</a>就可以了。<br>然后还需要安装<strong>git</strong>,同样的在<a href="https://git-scm.com/" target="_blank" rel="external">官网</a>下载安装，在安装git的过程中我参考了<a href="http://blog.csdn.net/wx_jin/article/details/51027783" target="_blank" rel="external">WX_JIN的安装记录</a>。<br>网上大多数Hexo都是和Github page一起搭建，因此还需要一个<a href="https://github.com/" target="_blank" rel="external">github</a>账号。<br>安装后上面两个软件后，直接在CMD中输入<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node -v</div><div class="line">git --version</div></pre></td></tr></table></figure></p>
 <p>我的系统环境是win10。<br>第一部分，本地环境搭建<br>首先安装<strong>Node.js</strong>,我安装的是6.11.0<br>Node的下载安装直接去<a href="https://nodejs.org/en/" target="_blank" rel="external">官网</a>就可以了。<br>然后还需要安装<strong>git</strong>,同样的在<a href="https://git-scm.com/" target="_blank" rel="external">官网</a>下载安装，在安装git的过程中我参考了<a href="http://blog.csdn.net/wx_jin/article/details/51027783" target="_blank" rel="external">WX_JIN的安装记录</a>。<br>网上大多数Hexo都是和Github page一起搭建，因此还需要一个<a href="https://github.com/" target="_blank" rel="external">github</a>账号。<br>安装后上面两个软件后，直接在CMD中输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; node -v</div><div class="line">&gt; git --version</div></pre></td></tr></table></figure></p>
-<p>两个命令分别是查看node的版本及git的版本，以查看<strong>Node.js</strong>和<strong>Git</strong>是否安装完成。<br><img src="/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/gitversion.jpg" alt="查看git版本"></p>
+<p>两个命令分别是查看node的版本及git的版本，以查看<strong>Node.js</strong>和<strong>Git</strong>是否安装完成。<br><img src="/2017/07/09/Win10下搭建Hexo/gitversion.jpg" alt="查看git版本"></p>
 <p>安装好Git后，需要配置用户名和邮箱。<br>在Git Bash中执行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;youname&quot;</div><div class="line">$ git config --global user.email &quot;youeamil@email.com&quot;</div></pre></td></tr></table></figure></p>
 <p>把双引号里面的内容替换成自己的用户名和邮箱即可。</p>
 <p>电脑第一次使用git，需要生成SSH Key<br>在Git Bash中执行代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;XXX@XXX.com&quot;</div></pre></td></tr></table></figure></p>
 <p>这里的XXX换成自己的邮箱。<br>生成SSH Key后将其添加到github的SSH Key中，方法是在github点击右上角的头像，选择Settings-&gt; SSH and GPG keys -&gt; New SSH key。</p>
-<p><img src="/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/githubsetting1.jpg" alt=""><br><img src="/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/githubsetting2.jpg" alt=""></p>
+<p><img src="/2017/07/09/Win10下搭建Hexo/githubsetting1.jpg" alt=""><br><img src="/2017/07/09/Win10下搭建Hexo/githubsetting2.jpg" alt=""></p>
 <p>完成上面的准备步骤后，即可开始安装<strong>hexo</strong><br>在本地新建一个目录Blog，以存放Hexo;创建完成后右键该目录，选择Git Bash Here。</p>
-<p><img src="/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/openbashhere.jpg" alt=""></p>
+<p><img src="/2017/07/09/Win10下搭建Hexo/openbashhere.jpg" alt=""></p>
 <p>进入Git Bash后<br>输入命令安装Hexo:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo</div></pre></td></tr></table></figure></p>
 <p>安装完成后可以输入hexo 以测试Hexo安装是否完成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo</div></pre></td></tr></table></figure></p>
 <p>接着要初始化Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init hexo</div></pre></td></tr></table></figure></p>
@@ -112,18 +112,18 @@
 <p>进入Blog文件夹，发现多了一个hexo的文件夹;同样的，右键Git Bash Here。<br>安装依赖文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
 <p>部署形成文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
 <p>然后在本地运行Hexo服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
-<p>此时用浏览器打开<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a><br>即可看到默认生成的博客页面。<br><img src="/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/localhexo.jpg" alt=""></p>
-<p>第二部分，部署Hexo到github page<br>首先要配置Github page,登录Github,新建一个Repository,Repository name是 Github的用户名.github.io<br><img src="/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/newrepository.jpg" alt=""></p>
-<p>然后需要将本地hexo项目上传至Gitgub。打开本地的hexo文件夹<br><img src="/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/config.jpg" alt=""><br>config.yml是hexo的配置文件，要将hexo部署到Github page上，需要打开配置文件,对最后面的deploy属性进行编辑，加上几行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ type: git</div><div class="line">$ repository: git@github.com:XXX/XXX.github.io.git</div><div class="line">$  branch: master</div></pre></td></tr></table></figure></p>
-<p>其中repository是刚才在Github建的仓库的地址<br><img src="/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/config2.jpg" alt=""><br>在这个配置文件中还可以修改网站的一些信息，在这里就不一一细说了。</p>
+<p>此时用浏览器打开<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a><br>即可看到默认生成的博客页面。<br><img src="/2017/07/09/Win10下搭建Hexo/localhexo.jpg" alt=""></p>
+<p>第二部分，部署Hexo到github page<br>首先要配置Github page,登录Github,新建一个Repository,Repository name是 Github的用户名.github.io<br><img src="/2017/07/09/Win10下搭建Hexo/newrepository.jpg" alt=""></p>
+<p>然后需要将本地hexo项目上传至Gitgub。打开本地的hexo文件夹<br><img src="/2017/07/09/Win10下搭建Hexo/config.jpg" alt=""><br>config.yml是hexo的配置文件，要将hexo部署到Github page上，需要打开配置文件,对最后面的deploy属性进行编辑，加上几行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ type: git</div><div class="line">$ repository: git@github.com:XXX/XXX.github.io.git</div><div class="line">$  branch: master</div></pre></td></tr></table></figure></p>
+<p>其中repository是刚才在Github建的仓库的地址<br><img src="/2017/07/09/Win10下搭建Hexo/config2.jpg" alt=""><br>在这个配置文件中还可以修改网站的一些信息，在这里就不一一细说了。</p>
 <p>为了部署hexo到Github page上,还需要安装hexo-deployer-git插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
 <p>最后，执行以下命令即可将hexo部署至Github page:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo generator</div><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
-<p>其中，hexo generator可以替换成hexo g , hexo deploy可以替换成hexo d 。<br>访问自己的<a href="https://cainsyake.github.io/">Github page</a>就可以看到部署成功的Hexo博客了。<br><img src="/2017/07/09/Win10下搭建Hexo/img/win10搭建hexo/boboblog.jpg" alt=""></p>
+<p>其中，hexo generator可以替换成hexo g , hexo deploy可以替换成hexo d 。<br>访问自己的<a href="https://cainsyake.github.io/">Github page</a>就可以看到部署成功的Hexo博客了。<br><img src="/2017/07/09/Win10下搭建Hexo/boboblog.jpg" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/" data-id="cj4wb3z760002lwu3vqiiyn0q" class="article-share-link">Delen</a>
+      <a data-url="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/" data-id="cj4wba45k0000d0u3dhp3fi63" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,11 +132,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/07/09/hexo中文/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nieuwer</strong>
+    <a href="/2017/07/09/idea搭建maven/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Idea中打包maven项目2
+          Idea中打包maven项目
         
       </div>
     </a>
@@ -161,7 +161,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
@@ -171,16 +171,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/07/09/Idea中打包maven项目/">Idea中打包maven项目</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/09/hexo中文/">Idea中打包maven项目2</a>
+            <a href="/2017/07/09/idea搭建maven/">Idea中打包maven项目</a>
           </li>
         
           <li>
