@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://cainsyake.github.io"></form>
@@ -60,6 +60,47 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Idea中打包maven项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/09/Idea中打包maven项目/" class="article-date">
+  <time datetime="2017-07-09T04:29:30.000Z" itemprop="datePublished">2017-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/09/Idea中打包maven项目/">Idea中打包maven项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个是一个利用Maven构建的<strong>Springboot</strong>项目，我用的<strong>Idea17</strong>。<br>本文主要讲的是如何利用Maven对项目进行打包，生成可执行的jar包，至于如何用Springboot进行开发，网上也有许多入门教程，改天我也会写一下我的Springboot学习记录。</p>
+<p>首先要打开Maven Project工具栏，点击菜单栏中的<strong>View</strong>，在<strong>Tool Windows</strong>中找到<strong>Maven Project</strong>，点击后即可在右侧看到Maven Project工具栏。<br><img src="img/maven打包/1.jpg" alt=""></p>
+<p>在<strong>Lifecycle-clean</strong>处右键，点击Run Maven Build<br><img src="img/maven打包/2.jpg" alt=""><br><img src="img/maven打包/3.jpg" alt=""></p>
+<p>然后选择<strong>install</strong>右键点击Run Maven Build<br><img src="img/maven打包/4.jpg" alt=""><br><img src="img/maven打包/5.jpg" alt=""><br>打包成功后即可在<strong>target</strong>目录下找到打包后的jar包<br><img src="img/maven打包/6.jpg" alt=""><br>为了测试，我把jar包复制到F盘根目录下。并在CMD中运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; java -jar psns-0.0.1-SNAPSHOT.jar</div></pre></td></tr></table></figure></p>
+<p><img src="img/maven打包/7.jpg" alt=""><br>运行后，看到熟悉的Spring标志，就成功一半啦。<br>在日志中可以看到<strong>Tomcat started on port(s):8080 (http)</strong><br>这表明该服务成功运行在8080端口上。<br><img src="img/maven打包/9.jpg" alt=""><br>最后打开浏览器，访问<a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a><br><img src="img/maven打包/8.jpg" alt=""><br>至此成功结束此次打包测试。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://cainsyake.github.io/2017/07/09/Idea中打包maven项目/" data-id="cj4w9w9ab0000d0u3sans7kr2" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Win10下搭建Hexo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -111,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/" data-id="cj4w7sxu60000hsu38tfvacl2" class="article-share-link">Share</a>
+      <a data-url="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/" data-id="cj4w9w9b10001d0u3j4j4agkp" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -136,7 +177,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
@@ -146,9 +187,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/07/09/Idea中打包maven项目/">Idea中打包maven项目</a>
+          </li>
         
           <li>
             <a href="/2017/07/09/Win10下搭建Hexo/">Windows10搭建Hexo并部署至github page</a>
