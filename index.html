@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://cainsyake.github.io"></form>
@@ -60,6 +60,45 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-如何进行业务处理-后端" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/23/如何进行业务处理-后端/" class="article-date">
+  <time datetime="2017-09-23T14:39:41.000Z" itemprop="datePublished">2017-09-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/23/如何进行业务处理-后端/">如何进行业务处理-后端</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这次还是以<strong>学生端的申请贷款</strong>为例，介绍一下后端是如何处理业务的。<br><br>Ajax向后台发出申请贷款的请求后，下面这段是<strong>Controller</strong>中的代码便起作用了。(@PostMapping注解中的<strong>value</strong>对找到这个方法起了关键的作用)<br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@PostMapping</span>(value = <span class="string">"operateApplyDebt/&#123;nowUserName&#125;"</span>)  <span class="comment">//@PostMapping注解是一个组合注解，该注解将Http Post映射到下面的处理方法上</span></div><div class="line"><span class="meta">@ResponseBody</span>   <span class="comment">//@ResponseBody注解将Controller的方法返回的对象通过适当的HttpMessageConverter转换为指定格式后(此为JSON)，写入到Response对象的body数据区</span></div><div class="line"><span class="function"><span class="keyword">public</span> RunningState <span class="title">operateApplyDebt</span><span class="params">(@PathVariable(<span class="string">"nowUserName"</span>)</span> String nowUserName, DebtState debtState)</span>&#123;     <span class="comment">//从请求中获取参数nowUserName及debtState</span></div><div class="line">    <span class="keyword">return</span> runningOperate.applyDebt(nowUserName, debtState);    <span class="comment">//调用applyDebt方法并返回runningState</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>处理业务的具体代码可以在<strong>runningOperate.applyDebt</strong>这个方法里面找到(RunningOperate类中均为处理具体业务的方法)，那么我们就来看下<strong>applyDebt方法</strong>的详细代码吧。<br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Transactional</span></div><div class="line"><span class="function"><span class="keyword">public</span> RunningState <span class="title">applyDebt</span><span class="params">(String username, DebtState debtState)</span></span>&#123;</div><div class="line">    RunningState runningState = getSubRunningStateService.getSubRunningState(username); <span class="comment">//通过用户名获取运行状态runningState</span></div><div class="line">    Rule rule = getTeachClassRuleService.getTeachClassRule(username);   <span class="comment">//通过用户名获取规则rule</span></div><div class="line">    Integer balance = runningState.getFinanceState().getCashAmount();   <span class="comment">//从runningState中提取出现金数额</span></div><div class="line">    Integer debtLimit = <span class="number">0</span>;  <span class="comment">//贷款额度</span></div><div class="line">    Integer timeYear = runningState.getBaseState().getTimeYear();   <span class="comment">//从runningState中提取出当前年份</span></div><div class="line">    <span class="comment">//TODO 贷款额度计算未扣减已贷款额</span></div><div class="line">    <span class="keyword">if</span> (timeYear == <span class="number">1</span>)&#123;</div><div class="line">        debtLimit = (<span class="keyword">int</span>)(rule.getRuleParam().getParamInitialCash() * rule.getRuleParam().getParamLoanRatio()); <span class="comment">//如果运行年份为第一年，贷款额度为初始现金*规则的贷款倍数</span></div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">        debtLimit = (<span class="keyword">int</span>)(operateFinancialStatementService.readWithTime(timeYear - <span class="number">1</span>, <span class="string">"ownersEquity"</span>, runningState) * rule.getRuleParam().getParamLoanRatio()); <span class="comment">//贷款额度为上年权益*规则的贷款倍数</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (debtState.getAmounts() &gt; debtLimit)&#123;    <span class="comment">//判断是否有足够的贷款额度</span></div><div class="line">        runningState.getBaseState().setMsg(<span class="string">"贷款额度不足"</span>);</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">        balance += debtState.getAmounts();  <span class="comment">//现金数额修改为原现金数额 + 贷款申请额</span></div><div class="line">        runningState.getFinanceState().setCashAmount(balance);  <span class="comment">//保存现金数额至runningState对象中</span></div><div class="line">        runningState.getFinanceState().getDebtStateList().add(debtState);   <span class="comment">//增加贷款记录至runningState对象中</span></div><div class="line">        <span class="keyword">if</span>(debtState.getDebtType() == <span class="number">1</span>)&#123;   <span class="comment">//判断是否是短贷</span></div><div class="line">            runningState.getBaseState().getOperateState().setShortLoan(<span class="number">1</span>);  <span class="comment">//时间轴:关闭短贷申请,即标记已进行短贷申请</span></div><div class="line">        &#125;</div><div class="line">        logger.info(<span class="string">"用户：&#123;&#125; 申请贷款：&#123;&#125;W 类型：&#123;&#125; 还款期：&#123;&#125;"</span>, username, debtState.getAmounts(), debtState.getDebtType(), debtState.getRepaymentPeriod());  <span class="comment">//后台打印日志</span></div><div class="line">        runningState.getBaseState().setMsg(<span class="string">""</span>); <span class="comment">//清空MSG</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> runningState;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>初次看这段代码(即便有注释)，估计大家也是一头雾水。我还是介绍下大多数业务的<strong>处理逻辑</strong>吧：<br><br><strong>查找提取各种状态、规则对象</strong> -&gt; <strong>对业务费用或业务限制进行计算</strong> -&gt; <strong>判断是否满足限制</strong> -&gt; <strong>处理业务</strong> -&gt; <strong>保存运行状态至数据库并返回运行状态</strong><br><br><br>在申请贷款这个业务中，即是：<br><br><strong>查找提取该用户的runningState、对应教学班的rule</strong> -&gt; <strong>对贷款额度进行计算</strong> -&gt; <strong>判断是否满足贷款额度限制</strong> -&gt; <strong>处理贷款业务</strong> -&gt; <strong>保存运行状态至数据库并返回运行状态</strong><br><br><br>要编写<strong>学生端业务代码</strong>，需要对<strong>ERP沙盘的规则</strong>有一定的了解。如果细心的话，我们可以发现上面那段代码中有一个<strong>TODO</strong>，如果是你，会有怎么样的修改，<strong>使得处理过程满足ERP沙盘的规则</strong>。<br><br>下一篇是对<strong>前端</strong>代码的说明。今后还继续在这篇文章里面补充一些<strong>有代表性的业务处理代码</strong>以及<strong>待实现功能</strong>的设计思路，请留意<a href="https://github.com/cainsyake/erp" target="_blank" rel="external">Github项目</a>的更新。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://cainsyake.github.io/2017/09/23/如何进行业务处理-后端/" data-id="cj7xhgwk40002xgu371ajgy6a" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-ERP沙盘是如何运行起来的" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -90,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://cainsyake.github.io/2017/09/12/ERP沙盘是如何运行起来的/" data-id="cj7h8ctqa0000l0u3g8g7s6zv" class="article-share-link">Share</a>
+      <a data-url="http://cainsyake.github.io/2017/09/12/ERP沙盘是如何运行起来的/" data-id="cj7xhgwir0000xgu38p0cdj5a" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -126,11 +165,11 @@
 <p>接着我们来登录一个创建好的<strong>教师</strong>账号的<br><br>和管理端相似，教师端的中部也是操作区和编辑区，不同的是教师端的操作区按钮要更多一点。<br><br>操作区第一行按钮主要是对整个<strong>教学班的初始化、还原操作</strong>。<br><br><img src="/2017/09/11/ERP沙盘运行起来是什么样子的/教师端/2017-09-11_20-45-53.gif" alt="查询子用户"><br><br>要注意的是，初始化和还原教学班都是比较重要的操作，务必小心进行，一旦操作成功将覆盖或删除相关数据库信息<br><br><img src="/2017/09/11/ERP沙盘运行起来是什么样子的/教师端/2017-09-11_20-48-15.gif" alt="初始化教学班"><br><br>操作区第二行按钮主要是对<strong>规则和市场</strong>进行操作，在这里就不再介绍了。<br><br><br>操作区第三行按钮主要是对教学班进行<strong>管控操作</strong>，这里以<strong>选单管理</strong>做一个简单的介绍。<br><br><img src="/2017/09/11/ERP沙盘运行起来是什么样子的/教师端/2017-09-11_20-49-30.gif" alt="结束选单"><br><br><img src="/2017/09/11/ERP沙盘运行起来是什么样子的/教师端/2017-09-11_20-53-45.gif" alt="开始选单"><br><br><img src="/2017/09/11/ERP沙盘运行起来是什么样子的/教师端/2017-09-11_20-55-10.gif" alt="选单监控"><br><br>对于教师端的介绍暂时到此为止，接下来的开发主要也是围绕<strong>教师端的统计/分析业务</strong>展开。<br><br></p>
 <p>最后我们来登录一个<strong>学生</strong>账号<br><br>页面的左上方是操作区，<br><br>操作区第一行按钮（也就是较大的按钮）是根据<strong>用户运营阶段不同</strong>而动态显示的<strong>可进行操作</strong>。<br><br>操作区第二行按钮（也就是较小的按钮）是用户在<strong>任何运营阶段</strong>均可进行的<strong>运营操作</strong>。<br><br>我们可以看一下从当年开始到第一季结束这个阶段的几个关键操作。<br><br><img src="/2017/09/11/ERP沙盘运行起来是什么样子的/学生端/2017-09-11_20-59-22.gif" alt="快速运营"><br><br><br>以申请短贷为例，这是一个相对简单的业务，输入贷款额后点击申请按钮即可向服务器后台发送请求。<br><br><img src="/2017/09/11/ERP沙盘运行起来是什么样子的/学生端/2017-09-11_21-00-43.gif" alt="申请短贷"><br><br><br>每进行一次业务操作，都会从服务器读取最新的运营状态，并显示在页面相应区域。<br><br>下面我们将通过进行厂房的租赁操作和生产线的新建操作来展示页面的更新。<br><br><img src="/2017/09/11/ERP沙盘运行起来是什么样子的/学生端/2017-09-11_21-01-54.gif" alt="厂房租赁和新建生产线"><br><br><br>最后我们看看初步版本的选单界面。<br><img src="/2017/09/11/ERP沙盘运行起来是什么样子的/学生端/2017-09-11_20-54-06.gif" alt="选单会"><br><br></p>
 <p>由于时间有限，目前只实现了大部分高频业务的处理，部分低频业务暂未完成开发；<br><br>前端部分目前目标为可用即可，因为尚未作太多优化，请见谅。<br><br></p>
-<h2 id="继续探索探索ERP系列-二-ERP沙盘是如何运行起来的。"><a href="#继续探索探索ERP系列-二-ERP沙盘是如何运行起来的。" class="headerlink" title="继续探索探索ERP系列(二) ERP沙盘是如何运行起来的。"></a>继续探索<a href="https://cainsyake.github.io/2017/09/12/ERP%E6%B2%99%E7%9B%98%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E8%B5%B7%E6%9D%A5%E7%9A%84/">探索ERP系列(二) ERP沙盘是如何运行起来的</a>。</h2>
+<h2 id="探索ERP系列-二-ERP沙盘是如何运行起来的。"><a href="#探索ERP系列-二-ERP沙盘是如何运行起来的。" class="headerlink" title="探索ERP系列(二) ERP沙盘是如何运行起来的。"></a><a href="https://cainsyake.github.io/2017/09/12/ERP%E6%B2%99%E7%9B%98%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E8%B5%B7%E6%9D%A5%E7%9A%84/">探索ERP系列(二) ERP沙盘是如何运行起来的</a>。</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://cainsyake.github.io/2017/09/11/ERP沙盘运行起来是什么样子的/" data-id="cj7h8ctqh0001l0u3vtofr9it" class="article-share-link">Share</a>
+      <a data-url="http://cainsyake.github.io/2017/09/11/ERP沙盘运行起来是什么样子的/" data-id="cj7xhgwj80001xgu3vicgd65n" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -171,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://cainsyake.github.io/2017/07/09/idea搭建maven/" data-id="cj7h8ctqx0003l0u3zn93jflg" class="article-share-link">Share</a>
+      <a data-url="http://cainsyake.github.io/2017/07/09/idea搭建maven/" data-id="cj7xhgwkb0004xgu3erub7qot" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -231,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/" data-id="cj7h8ctqn0002l0u31c07851a" class="article-share-link">Share</a>
+      <a data-url="http://cainsyake.github.io/2017/07/09/Win10下搭建Hexo/" data-id="cj7xhgwk80003xgu3gm9l2hdw" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -266,9 +305,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/09/23/如何进行业务处理-后端/">如何进行业务处理-后端</a>
+          </li>
         
           <li>
             <a href="/2017/09/12/ERP沙盘是如何运行起来的/">探索ERP系列(二) ERP沙盘是如何运行起来的</a>
@@ -299,7 +342,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Bobo<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
