@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如何进行业务处理-后端 | Bobo&#39;s Blog</title>
+  <title>探索ERP系列(三)如何进行业务处理-后端 | Bobo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="这次还是以学生端的申请贷款为例，介绍一下后端是如何处理业务的。Ajax向后台发出申请贷款的请求后，下面这段是Controller中的代码便起作用了。(@PostMapping注解中的value对找到这个方法起了关键的作用)12345@PostMapping(value = &quot;operateApplyDebt/&amp;#123;nowUserName&amp;#125;&quot;)  //@PostMapping注解是一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何进行业务处理-后端">
+<meta property="og:title" content="探索ERP系列(三)如何进行业务处理-后端">
 <meta property="og:url" content="http://cainsyake.github.io/2017/09/23/如何进行业务处理-后端/index.html">
 <meta property="og:site_name" content="Bobo&#39;s Blog">
 <meta property="og:description" content="这次还是以学生端的申请贷款为例，介绍一下后端是如何处理业务的。Ajax向后台发出申请贷款的请求后，下面这段是Controller中的代码便起作用了。(@PostMapping注解中的value对找到这个方法起了关键的作用)12345@PostMapping(value = &quot;operateApplyDebt/&amp;#123;nowUserName&amp;#125;&quot;)  //@PostMapping注解是一">
-<meta property="og:updated_time" content="2017-09-23T15:41:01.572Z">
+<meta property="og:updated_time" content="2017-09-23T15:47:04.914Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何进行业务处理-后端">
+<meta name="twitter:title" content="探索ERP系列(三)如何进行业务处理-后端">
 <meta name="twitter:description" content="这次还是以学生端的申请贷款为例，介绍一下后端是如何处理业务的。Ajax向后台发出申请贷款的请求后，下面这段是Controller中的代码便起作用了。(@PostMapping注解中的value对找到这个方法起了关键的作用)12345@PostMapping(value = &quot;operateApplyDebt/&amp;#123;nowUserName&amp;#125;&quot;)  //@PostMapping注解是一">
   
     <link rel="alternate" href="/atom.xml" title="Bobo&#39;s Blog" type="application/atom+xml">
@@ -52,9 +52,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://cainsyake.github.io"></form>
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      如何进行业务处理-后端
+      探索ERP系列(三)如何进行业务处理-后端
     </h1>
   
 
@@ -87,12 +87,12 @@
       
         <p>这次还是以<strong>学生端的申请贷款</strong>为例，介绍一下后端是如何处理业务的。<br><br>Ajax向后台发出申请贷款的请求后，下面这段是<strong>Controller</strong>中的代码便起作用了。(@PostMapping注解中的<strong>value</strong>对找到这个方法起了关键的作用)<br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@PostMapping</span>(value = <span class="string">"operateApplyDebt/&#123;nowUserName&#125;"</span>)  <span class="comment">//@PostMapping注解是一个组合注解，该注解将Http Post映射到下面的处理方法上</span></div><div class="line"><span class="meta">@ResponseBody</span>   <span class="comment">//@ResponseBody注解将Controller的方法返回的对象通过适当的HttpMessageConverter转换为指定格式后(此为JSON)，写入到Response对象的body数据区</span></div><div class="line"><span class="function"><span class="keyword">public</span> RunningState <span class="title">operateApplyDebt</span><span class="params">(@PathVariable(<span class="string">"nowUserName"</span>)</span> String nowUserName, DebtState debtState)</span>&#123;     <span class="comment">//从请求中获取参数nowUserName及debtState</span></div><div class="line">    <span class="keyword">return</span> runningOperate.applyDebt(nowUserName, debtState);    <span class="comment">//调用applyDebt方法并返回runningState</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>处理业务的具体代码可以在<strong>runningOperate.applyDebt</strong>这个方法里面找到(RunningOperate类中均为处理具体业务的方法)，那么我们就来看下<strong>applyDebt方法</strong>的详细代码吧。<br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Transactional</span></div><div class="line"><span class="function"><span class="keyword">public</span> RunningState <span class="title">applyDebt</span><span class="params">(String username, DebtState debtState)</span></span>&#123;</div><div class="line">    RunningState runningState = getSubRunningStateService.getSubRunningState(username); <span class="comment">//通过用户名获取运行状态runningState</span></div><div class="line">    Rule rule = getTeachClassRuleService.getTeachClassRule(username);   <span class="comment">//通过用户名获取规则rule</span></div><div class="line">    Integer balance = runningState.getFinanceState().getCashAmount();   <span class="comment">//从runningState中提取出现金数额</span></div><div class="line">    Integer debtLimit = <span class="number">0</span>;  <span class="comment">//贷款额度</span></div><div class="line">    Integer timeYear = runningState.getBaseState().getTimeYear();   <span class="comment">//从runningState中提取出当前年份</span></div><div class="line">    <span class="comment">//TODO 贷款额度计算未扣减已贷款额</span></div><div class="line">    <span class="keyword">if</span> (timeYear == <span class="number">1</span>)&#123;</div><div class="line">        debtLimit = (<span class="keyword">int</span>)(rule.getRuleParam().getParamInitialCash() * rule.getRuleParam().getParamLoanRatio()); <span class="comment">//如果运行年份为第一年，贷款额度为初始现金*规则的贷款倍数</span></div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">        debtLimit = (<span class="keyword">int</span>)(operateFinancialStatementService.readWithTime(timeYear - <span class="number">1</span>, <span class="string">"ownersEquity"</span>, runningState) * rule.getRuleParam().getParamLoanRatio()); <span class="comment">//贷款额度为上年权益*规则的贷款倍数</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (debtState.getAmounts() &gt; debtLimit)&#123;    <span class="comment">//判断是否有足够的贷款额度</span></div><div class="line">        runningState.getBaseState().setMsg(<span class="string">"贷款额度不足"</span>);</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">        balance += debtState.getAmounts();  <span class="comment">//现金数额修改为原现金数额 + 贷款申请额</span></div><div class="line">        runningState.getFinanceState().setCashAmount(balance);  <span class="comment">//保存现金数额至runningState对象中</span></div><div class="line">        runningState.getFinanceState().getDebtStateList().add(debtState);   <span class="comment">//增加贷款记录至runningState对象中</span></div><div class="line">        <span class="keyword">if</span>(debtState.getDebtType() == <span class="number">1</span>)&#123;   <span class="comment">//判断是否是短贷</span></div><div class="line">            runningState.getBaseState().getOperateState().setShortLoan(<span class="number">1</span>);  <span class="comment">//时间轴:关闭短贷申请,即标记已进行短贷申请</span></div><div class="line">        &#125;</div><div class="line">        logger.info(<span class="string">"用户：&#123;&#125; 申请贷款：&#123;&#125;W 类型：&#123;&#125; 还款期：&#123;&#125;"</span>, username, debtState.getAmounts(), debtState.getDebtType(), debtState.getRepaymentPeriod());  <span class="comment">//后台打印日志</span></div><div class="line">        runningState.getBaseState().setMsg(<span class="string">""</span>); <span class="comment">//清空MSG</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> runningState;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>初次看这段代码(即便有注释)，估计大家也是一头雾水。我还是介绍下大多数业务的<strong>处理逻辑</strong>吧：<br><br><strong>查找提取各种状态、规则对象</strong> -&gt; <strong>对业务费用或业务限制进行计算</strong> -&gt; <strong>判断是否满足限制</strong> -&gt; <strong>处理业务</strong> -&gt; <strong>保存运行状态至数据库并返回运行状态</strong><br><br><br>在申请贷款这个业务中，即是：<br><br><strong>查找提取该用户的runningState、对应教学班的rule</strong> -&gt; <strong>对贷款额度进行计算</strong> -&gt; <strong>判断是否满足贷款额度限制</strong> -&gt; <strong>处理贷款业务</strong> -&gt; <strong>保存运行状态至数据库并返回运行状态</strong><br><br><br>要编写<strong>学生端业务代码</strong>，需要对<strong>ERP沙盘的规则</strong>有一定的了解。如果细心的话，我们可以发现上面那段代码中有一个<strong>TODO</strong>，如果是你，会有怎么样的修改，<strong>使得处理过程满足ERP沙盘的规则</strong>。<br><br>下一篇是对<strong>前端</strong>代码的说明。今后还继续在这篇文章里面补充一些<strong>有代表性的业务处理代码</strong>以及<strong>待实现功能</strong>的设计思路，请留意<a href="https://github.com/cainsyake/erp" target="_blank" rel="external">Github项目</a>的更新。</p>
-
+<p>初次看这段代码(即便有注释)，估计大家也是一头雾水。我还是介绍下大多数业务的<strong>处理逻辑</strong>吧：<br><br><strong>查找提取各种状态、规则对象</strong> -&gt; <strong>对业务费用或业务限制进行计算</strong> -&gt; <strong>判断是否满足限制</strong> -&gt; <strong>处理业务</strong> -&gt; <strong>保存运行状态至数据库并返回运行状态</strong><br><br><br>在申请贷款这个业务中，即是：<br><br><strong>查找提取该用户的runningState、对应教学班的rule</strong> -&gt; <strong>对贷款额度进行计算</strong> -&gt; <strong>判断是否满足贷款额度限制</strong> -&gt; <strong>处理贷款业务</strong> -&gt; <strong>保存运行状态至数据库并返回运行状态</strong><br><br><br>要编写<strong>学生端业务代码</strong>，需要对<strong>ERP沙盘的规则</strong>有一定的了解。如果细心的话，我们可以发现上面那段代码中有一个<strong>TODO</strong>，如果是你，会有怎么样的修改，<strong>使得处理过程满足ERP沙盘的规则</strong>。<br><br>下一篇是对<strong>前端</strong>代码的说明。今后还继续在这篇文章里面补充一些<strong>有代表性的业务处理代码</strong>以及<strong>待实现功能</strong>的设计思路，请留意<a href="https://github.com/cainsyake/erp" target="_blank" rel="external">Github项目</a>的更新。<br><br></p>
+<h2 id="回顾上一篇文章：探索ERP系列-二-ERP沙盘是如何运行起来的"><a href="#回顾上一篇文章：探索ERP系列-二-ERP沙盘是如何运行起来的" class="headerlink" title="回顾上一篇文章：探索ERP系列(二) ERP沙盘是如何运行起来的"></a>回顾上一篇文章：<a href="https://cainsyake.github.io/2017/09/12/ERP%E6%B2%99%E7%9B%98%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E8%B5%B7%E6%9D%A5%E7%9A%84/">探索ERP系列(二) ERP沙盘是如何运行起来的</a></h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://cainsyake.github.io/2017/09/23/如何进行业务处理-后端/" data-id="cj7xhgwk40002xgu371ajgy6a" class="article-share-link">Partager</a>
+      <a data-url="http://cainsyake.github.io/2017/09/23/如何进行业务处理-后端/" data-id="cj7xhnnr600042ou3bmwd6c7p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -103,7 +103,7 @@
   
   
     <a href="/2017/09/12/ERP沙盘是如何运行起来的/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">探索ERP系列(二) ERP沙盘是如何运行起来的</div>
     </a>
   
@@ -136,12 +136,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/09/23/如何进行业务处理-后端/">如何进行业务处理-后端</a>
+            <a href="/2017/09/23/如何进行业务处理-后端/">探索ERP系列(三)如何进行业务处理-后端</a>
           </li>
         
           <li>
@@ -173,7 +173,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Bobo<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
