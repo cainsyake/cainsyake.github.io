@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>探索ERP系列(四) 如何进行业务处理-前端 | Bobo&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="接着上一篇对于学生端的申请贷款的深入解释，这里我们来仔细观察用户点击”申请”按钮后前端发生了什么。1&amp;lt;button class=&quot;btn btn-success&quot; type=&quot;button&quot; onclick=&quot;operateApplyShortDebt()&quot;&amp;gt;申请&amp;lt;/button&amp;gt; 这是按钮的Html代码，可以看到onclick事件调用了operateApplyShortD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="探索ERP系列(四) 如何进行业务处理-前端">
+<meta property="og:url" content="http://cainsyake.github.io/2017/09/24/如何进行业务处理-前端/index.html">
+<meta property="og:site_name" content="Bobo&#39;s Blog">
+<meta property="og:description" content="接着上一篇对于学生端的申请贷款的深入解释，这里我们来仔细观察用户点击”申请”按钮后前端发生了什么。1&amp;lt;button class=&quot;btn btn-success&quot; type=&quot;button&quot; onclick=&quot;operateApplyShortDebt()&quot;&amp;gt;申请&amp;lt;/button&amp;gt; 这是按钮的Html代码，可以看到onclick事件调用了operateApplyShortD">
+<meta property="og:updated_time" content="2017-09-24T04:43:27.256Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="探索ERP系列(四) 如何进行业务处理-前端">
+<meta name="twitter:description" content="接着上一篇对于学生端的申请贷款的深入解释，这里我们来仔细观察用户点击”申请”按钮后前端发生了什么。1&amp;lt;button class=&quot;btn btn-success&quot; type=&quot;button&quot; onclick=&quot;operateApplyShortDebt()&quot;&amp;gt;申请&amp;lt;/button&amp;gt; 这是按钮的Html代码，可以看到onclick事件调用了operateApplyShortD">
+  
+    <link rel="alternate" href="/atom.xml" title="Bobo&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Bobo&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://cainsyake.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-如何进行业务处理-前端" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/24/如何进行业务处理-前端/" class="article-date">
+  <time datetime="2017-09-24T03:52:18.000Z" itemprop="datePublished">2017-09-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      探索ERP系列(四) 如何进行业务处理-前端
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>接着上一篇对于学生端的申请贷款的深入解释，这里我们来仔细观察用户点击”申请”按钮后前端发生了什么。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-success"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"operateApplyShortDebt()"</span>&gt;</span>申请<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这是按钮的Html代码，可以看到onclick事件调用了operateApplyShortDebt这个函数，那么我们就到erp-sub.js文件中找出这个函数的代码。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">operateApplyShortDebt</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> nowUserName = $(<span class="string">"#nowUserName"</span>).val();  <span class="comment">//从页面读取用户名</span></div><div class="line">    <span class="keyword">var</span> debtLimit = <span class="built_in">parseInt</span>($(<span class="string">"#valueDebtLimit2"</span>).html()); <span class="comment">//从页面读取贷款额度</span></div><div class="line">    <span class="keyword">var</span> shortDebtAmount = $(<span class="string">"#shortDebtAmount"</span>).val();  <span class="comment">//从页面读取贷款申请额</span></div><div class="line">    <span class="keyword">if</span>(debtLimit == <span class="number">0</span>)&#123;     <span class="comment">//判断贷款额度是否为0</span></div><div class="line">        alert(<span class="string">"现在已经没有贷款额度了，无法申请贷款"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(shortDebtAmount &gt; debtLimit)&#123;    <span class="comment">//判断贷款申请额是否大于贷款额度</span></div><div class="line">        alert(<span class="string">"贷款额度不足，申请失败"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">var</span> debt = &#123;    <span class="comment">//贷款对象</span></div><div class="line">            debtType: <span class="number">1</span>,    <span class="comment">//贷款类型,1-短贷 2-长贷</span></div><div class="line">            repaymentPeriod: <span class="number">4</span>, <span class="comment">//还款期</span></div><div class="line">            amounts: shortDebtAmount    <span class="comment">//贷款申请额</span></div><div class="line">        &#125;;</div><div class="line">        $.ajax(&#123;</div><div class="line">            <span class="attr">type</span>:<span class="string">"POST"</span>,    <span class="comment">//请求类型</span></div><div class="line">            url:<span class="string">"/operateApplyDebt/"</span> + nowUserName, <span class="comment">//请求URL</span></div><div class="line">            cache:<span class="literal">false</span>,    <span class="comment">//是否从缓存中读取</span></div><div class="line">            dataType:<span class="string">"json"</span>,    <span class="comment">//预期服务器返回的数据类型</span></div><div class="line">            data:debt,  <span class="comment">//发送到服务器的数据</span></div><div class="line">            success:<span class="function"><span class="keyword">function</span> (<span class="params">runningState</span>) </span>&#123;   <span class="comment">//请求成功后回调函数</span></div><div class="line">                subOnLoad();    <span class="comment">//调用页面载入函数，重新加载页面内容</span></div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"ajaxDiv1"</span>).innerHTML = runningState.baseState.msg; <span class="comment">//输入MSG到页面</span></div><div class="line">                $(<span class="string">"#btnCloseModalApplyShortDebt"</span>).click();  <span class="comment">//关闭贷款申请框</span></div><div class="line">            &#125;,</div><div class="line">            <span class="attr">error</span>:<span class="function"><span class="keyword">function</span> (<span class="params">json</span>) </span>&#123;     <span class="comment">//请求失败后回调函数</span></div><div class="line">                <span class="built_in">console</span>.log(json.responseText);     <span class="comment">//在控制台中打印返回信息</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>前端业务的一般处理逻辑：<br><br>读取基础信息 -&gt; 读取业务输入信息 -&gt; 判断是否满足限制 -&gt; 通过Ajax发送请求 -&gt; 请求成功后执行回调函数<br><br><br>在上面的那段代码中，有这么一个函数<strong>subOnLoad()</strong>，这个函数的作用是更新页面的内容。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload=subOnLoad;    <span class="comment">//页面载入时执行此函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">subOnLoad</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> nowUserName = $(<span class="string">"#nowUserName"</span>).val();  <span class="comment">//从页面读取用户名</span></div><div class="line">    $.ajax(&#123;</div><div class="line">        <span class="attr">type</span>:<span class="string">"POST"</span>,</div><div class="line">        <span class="attr">url</span>:<span class="string">"/getTeachClassRule/"</span> + nowUserName,</div><div class="line">        <span class="attr">cache</span>:<span class="literal">false</span>,</div><div class="line">        <span class="attr">dataType</span>:<span class="string">"json"</span>,</div><div class="line">        <span class="attr">success</span>:<span class="function"><span class="keyword">function</span> (<span class="params">rule</span>) </span>&#123;   <span class="comment">//请求成功后服务器返回rule对象</span></div><div class="line">            $.ajax(&#123;</div><div class="line">                <span class="attr">type</span>:<span class="string">"POST"</span>,</div><div class="line">                <span class="attr">url</span>:<span class="string">"/getSubRunningState/"</span> + nowUserName,</div><div class="line">                <span class="attr">cache</span>:<span class="literal">false</span>,</div><div class="line">                <span class="attr">dataType</span>:<span class="string">"json"</span>,</div><div class="line">                <span class="attr">success</span>:<span class="function"><span class="keyword">function</span> (<span class="params">runningState</span>) </span>&#123;   <span class="comment">//请求成功后服务器返回runningState对象</span></div><div class="line">                    btnController(runningState);    <span class="comment">//页面按钮控制函数</span></div><div class="line">                    pageController(rule, runningState); <span class="comment">//页面表格控制函数</span></div><div class="line">                    infoController(runningState, rule); <span class="comment">//页面内容控制函数</span></div><div class="line">                &#125;,</div><div class="line">                <span class="attr">error</span>:<span class="function"><span class="keyword">function</span> (<span class="params">json</span>) </span>&#123;</div><div class="line">                    <span class="built_in">console</span>.log(json.responseText);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">error</span>:<span class="function"><span class="keyword">function</span> (<span class="params">json</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(json.responseText);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>基本每个业务执行完后，都会调用上面这个函数，因为业务执行后用户的运行状态会产生变化，页面的内容也需要及时更新。<br><br>subOnLoad及其调用的三个页面控制函数的代码数量在一千左右，但阅读起来并不困难，因为这些代码主要是将rule和runningState中的数值输出到页面指定位置中。<br><br>整个erp-sub.js的代码有三千多行，虽然数量较多，但大多数同类型函数的结构都是类似的；要快速熟悉这个平台，不必从头到尾看一遍代码，可以视实际需要找出部分代码进行阅读即可。<br><br><br>由于之前大部分精力都用于业务的实现，无论是后端还是前端都很少用到一些好的设计模式，对于初次接触这个项目的开发者在阅读、修改或编写新代码方面还不够友好。在写文档的同时我也在思考如何进行优化，但由于还有许多新功能等待设计开发，优化工作进展还是相对缓慢的，如果各位认为哪一块亟须优化改善的话亦可以联系我，我也会尽我所能为各位开发者提供支持。<br><br><br>这个系列的文章到这里就结束了？嗯，但<strong>探索(三)、探索(四)这两篇文章还会继续更新内容</strong>。<br><br>如果各位在阅读这几篇文章后，对于此项目还有任何疑问，可以通过Github提交<a href="https://github.com/cainsyake/erp/issues/new" target="_blank" rel="external">ISSUE</a>或直接发邮件联系我 <strong>cainsyake@gmail.com</strong>，我会在第一时间解答各位的疑问，感谢你对这个项目的关注与支持，谢谢！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://cainsyake.github.io/2017/09/24/如何进行业务处理-前端/" data-id="cj7y9eg490003qou3qd2rzfkc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/23/如何进行业务处理-后端/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">探索ERP系列(三) 如何进行业务处理-后端</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/24/如何进行业务处理-前端/">探索ERP系列(四) 如何进行业务处理-前端</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/23/如何进行业务处理-后端/">探索ERP系列(三) 如何进行业务处理-后端</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/12/ERP沙盘是如何运行起来的/">探索ERP系列(二) ERP沙盘是如何运行起来的</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/11/ERP沙盘运行起来是什么样子的/">探索ERP系列(一) ERP沙盘运行起来是什么样子的</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/09/idea搭建maven/">Idea中打包maven项目</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Bobo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
