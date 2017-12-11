@@ -69,16 +69,16 @@
 
 
 
-<meta name="description" content="前端(Vue.js)首先安装base64.js和md5.js12npm install --save js-base64npm install --save js-md5 在.vue文件的script标签中引入上面两个js12345import md5 from &amp;apos;js-md5&amp;apos;;let Base64 = require(&amp;apos;js-base64&amp;apos;).Base6">
+<meta name="description" content="前端(Vue.js)首先安装base64.js和md5.js12npm install --save js-base64npm install --save js-md5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BASE64编码与MD5加密在Springboot及Vue.js中的应用">
 <meta property="og:url" content="http://cainsyake.github.io/2017/12/11/BASE64编码与MD5加密在Springboot及Vue-js中的应用/index.html">
 <meta property="og:site_name" content="Bobo&#39;s Blog">
-<meta property="og:description" content="前端(Vue.js)首先安装base64.js和md5.js12npm install --save js-base64npm install --save js-md5 在.vue文件的script标签中引入上面两个js12345import md5 from &amp;apos;js-md5&amp;apos;;let Base64 = require(&amp;apos;js-base64&amp;apos;).Base6">
-<meta property="og:updated_time" content="2017-12-11T06:34:56.688Z">
+<meta property="og:description" content="前端(Vue.js)首先安装base64.js和md5.js12npm install --save js-base64npm install --save js-md5">
+<meta property="og:updated_time" content="2017-12-11T06:38:28.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BASE64编码与MD5加密在Springboot及Vue.js中的应用">
-<meta name="twitter:description" content="前端(Vue.js)首先安装base64.js和md5.js12npm install --save js-base64npm install --save js-md5 在.vue文件的script标签中引入上面两个js12345import md5 from &amp;apos;js-md5&amp;apos;;let Base64 = require(&amp;apos;js-base64&amp;apos;).Base6">
+<meta name="twitter:description" content="前端(Vue.js)首先安装base64.js和md5.js12npm install --save js-base64npm install --save js-md5">
 
 
 
@@ -299,6 +299,7 @@
 
       
         <h2 id="前端-Vue-js"><a href="#前端-Vue-js" class="headerlink" title="前端(Vue.js)"></a>前端(<strong>Vue.js</strong>)</h2><p>首先安装base64.js和md5.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install --save js-base64</div><div class="line">npm install --save js-md5</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p><br><br>在.vue文件的<strong>script</strong>标签中引入上面两个js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import md5 from &apos;js-md5&apos;;</div><div class="line">let Base64 = require(&apos;js-base64&apos;).Base64;</div><div class="line">```&lt;br&gt;</div><div class="line"></div><div class="line">Base64编码</div></pre></td></tr></table></figure></p>
 <p>var newStr = Base64.encode(oldStr);     //oldStr为加密前的字符串,newStr为加密后的字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Base64解码</div></pre></td></tr></table></figure></p>
 <p>var afterStr = Base64.decode(beforeStr);    //beforeStr为解密前的字符串,afterStr为解密后的字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;br&gt;&lt;br&gt;</div><div class="line">md5加密（md5摘要算法不可逆）</div></pre></td></tr></table></figure></p>
