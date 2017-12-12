@@ -228,6 +228,132 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cainsyake.github.io/2017/12/12/Springboot集成腾讯云对象存储COS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bobo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bobo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/12/Springboot集成腾讯云对象存储COS/" itemprop="url">Springboot集成腾讯云对象存储COS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T12:43:07+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="引入SDK"><a href="#引入SDK" class="headerlink" title="引入SDK"></a>引入SDK</h2><p>我在这个Springboot项目中是使用Maven对项目进行管理。集成COS是通过腾讯云提供的Java SDK来实现。<br><br>引入SDK只需在pom.xml中添加依赖(现在调用的是基于XML API的SDK,一个项目中只能选择基于XML或者JSON二者其中之一的SDK)。<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;com.qcloud&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;cos_api&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;5.2.2&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<p>目前基于XML API的SDK未支持对bucker中目录的操作；而JSON则支持，但版本稍旧，且腾讯云建议使用基于XML API的SDK，所以这里选择使用基于XML API的SDK。<br><br></p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/12/Springboot集成腾讯云对象存储COS/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cainsyake.github.io/2017/12/11/BASE64编码与MD5加密在Springboot及Vue-js中的应用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1254,7 +1380,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
