@@ -298,8 +298,8 @@
 
       
         
-          <h2 id="引入SDK"><a href="#引入SDK" class="headerlink" title="引入SDK"></a>引入SDK</h2><p>我在这个Springboot项目中是使用Maven对项目进行管理。集成COS是通过腾讯云提供的Java SDK来实现。<br><br>引入SDK只需在pom.xml中添加依赖(现在调用的是基于XML API的SDK,一个项目中只能选择基于XML或者JSON二者其中之一的SDK)。<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;com.qcloud&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;cos_api&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;5.2.2&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
-<p>目前基于XML API的SDK未支持对bucker中目录的操作；而JSON则支持，但版本稍旧，且腾讯云建议使用基于XML API的SDK，所以这里选择使用基于XML API的SDK。<br><br></p>
+          <h2 id="引入SDK"><a href="#引入SDK" class="headerlink" title="引入SDK"></a>引入SDK</h2><p>我在这个Springboot项目中是使用Maven对项目进行管理。集成COS是通过腾讯云提供的Java SDK来实现。<br>引入SDK只需在pom.xml中添加依赖(现在调用的是基于XML API的SDK,一个项目中只能选择基于XML或者JSON二者其中之一的SDK)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;com.qcloud&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;cos_api&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;5.2.2&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<p>目前基于XML API的SDK未支持对bucker中目录的操作；而JSON则支持，但版本稍旧，且腾讯云建议使用基于XML API的SDK，所以这里选择使用基于XML API的SDK。<br></p>
 <h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2>
           <!--noindex-->
           <div class="post-button text-center">
