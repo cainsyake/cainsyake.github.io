@@ -301,7 +301,9 @@
           <h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2><ol>
 <li>通过Ajax获取要复制的对象 srcObj</li>
 <li>遍历srcObj，将其中全部id属性(也就是主键)delete掉</li>
-<li>通过Ajax提交处理后的srcObj，后端直接save(srcObj)即可保存为新的对象。<br>（如果srcObj是在页面js的全局变量中获取的，需要进行深拷贝，然后用拷贝后的对象进行上述2、3步的处理）<br></li></ol>
+<li>通过Ajax提交处理后的srcObj，后端直接save(srcObj)即可保存为新的对象。</li>
+</ol>
+<p>（如果srcObj是在页面js的全局变量中获取的，需要进行深拷贝，然后用拷贝后的对象进行上述2、3步的处理）<br><br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/12/14/通过js实现Hibernate的持久化对象复制/#more" rel="contents">
