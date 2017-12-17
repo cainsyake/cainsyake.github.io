@@ -75,7 +75,7 @@
 <meta property="og:url" content="http://cainsyake.github.io/2017/12/17/vue-v-if判断数组中元素的处理/index.html">
 <meta property="og:site_name" content="Bobo&#39;s Blog">
 <meta property="og:description" content="我的vue版本为2.8为了实现评论回复的功能，我用v-for遍历了每一条评论。然后每条评论里面都有一个div放回复(reply)的输入框和按钮，并用v-if控制这个div的显示。 大概逻辑如下：点击回复按钮 -&amp;gt; this.allowReply[index] = true -&amp;gt; 显示回复div">
-<meta property="og:updated_time" content="2017-12-17T08:02:30.575Z">
+<meta property="og:updated_time" content="2017-12-17T08:06:27.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue v-if判断数组中元素的处理">
 <meta name="twitter:description" content="我的vue版本为2.8为了实现评论回复的功能，我用v-for遍历了每一条评论。然后每条评论里面都有一个div放回复(reply)的输入框和按钮，并用v-if控制这个div的显示。 大概逻辑如下：点击回复按钮 -&amp;gt; this.allowReply[index] = true -&amp;gt; 显示回复div">
@@ -301,7 +301,7 @@
         <p>我的vue版本为2.8<br>为了实现评论回复的功能，我用v-for遍历了每一条评论。然后每条评论里面都有一个div放<strong>回复</strong>(reply)的输入框和按钮，并用v-if控制这个div的显示。</p>
 <p>大概逻辑如下：<br>点击<strong>回复按钮</strong> -&gt; this.allowReply[index] = true -&gt; 显示<strong>回复div</strong><br><a id="more"></a><br>但在实践中发现即便将对应的控制变量赋值为true后，对应的<strong>回复div</strong>还是没有显示出来。<br>经过搜索，发现了差不多的情况，<a href="https://stackoverflow.com/questions/41580617/vuejs-v-if-arrayindex-is-not-working" target="_blank" rel="external">点击这里查看问题</a></p>
 <p>看了解决办法后，我使用<strong>splice()函数</strong>后，就生效了，但还是遇到了一些<strong>Bug</strong>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.allowReply.splice(index, <span class="number">1</span>, <span class="literal">true</span>);  <span class="comment">//似乎这样可将allowReply数组中下标为index处的值改为true</span></div></pre></td></tr></table></figure></p>
-<p>当index<strong>大于0</strong>时，true会被插入allowReply[0]，而不是allowReply[index]上。</p>
+<p>当index<strong>大于0</strong>时，true会被插入allowReply[allowReply.length]，而不是allowReply[index]上。<br>（即当<strong>allowReply为空数组</strong>时，this.allowReply.splice(2, 1, true) 只会将true插入到<strong>allowReply[0]</strong>中，而不是<strong>allowReply[2]</strong>里面）</p>
 <p>为了解决这个问题，我在获取评论数据后，把allowReply用false填充满，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.commentData.length; i++) &#123;</div><div class="line">    <span class="keyword">this</span>.allowReply.push(<span class="literal">false</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>之后再执行splice函数对allowReply中的元素进行操作时，便不会出现异常，但这也增加了性能消耗。<br>希望能尽快找到更好的解决办法。</p>
 
