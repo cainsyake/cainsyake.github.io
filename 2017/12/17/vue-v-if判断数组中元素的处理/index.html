@@ -69,26 +69,16 @@
 
 
 
-<meta name="description" content="这个是一个利用Maven构建的Springboot项目，我用的Idea17。本文主要讲的是如何利用Maven对项目进行打包，生成可执行的jar包，至于如何用Springboot进行开发，网上也有许多入门教程，改天我也会写一下我的Springboot学习记录。">
+<meta name="description" content="我的vue版本为2.8为了实现评论回复的功能，我用v-for遍历了每一条评论。然后每条评论里面都有一个div放回复(reply)的输入框和按钮，并用v-if控制这个div的显示。 大概逻辑如下：点击回复按钮 -&amp;gt; this.allowReply[index] = true -&amp;gt; 显示回复div">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Idea中打包maven项目">
-<meta property="og:url" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/index.html">
+<meta property="og:title" content="vue v-if判断数组中元素的处理">
+<meta property="og:url" content="http://cainsyake.github.io/2017/12/17/vue-v-if判断数组中元素的处理/index.html">
 <meta property="og:site_name" content="Bobo&#39;s Blog">
-<meta property="og:description" content="这个是一个利用Maven构建的Springboot项目，我用的Idea17。本文主要讲的是如何利用Maven对项目进行打包，生成可执行的jar包，至于如何用Springboot进行开发，网上也有许多入门教程，改天我也会写一下我的Springboot学习记录。">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/1.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/2.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/3.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/4.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/5.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/6.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/7.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/9.jpg">
-<meta property="og:image" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/8.jpg">
-<meta property="og:updated_time" content="2017-09-24T12:41:19.685Z">
+<meta property="og:description" content="我的vue版本为2.8为了实现评论回复的功能，我用v-for遍历了每一条评论。然后每条评论里面都有一个div放回复(reply)的输入框和按钮，并用v-if控制这个div的显示。 大概逻辑如下：点击回复按钮 -&amp;gt; this.allowReply[index] = true -&amp;gt; 显示回复div">
+<meta property="og:updated_time" content="2017-12-17T08:02:30.575Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Idea中打包maven项目">
-<meta name="twitter:description" content="这个是一个利用Maven构建的Springboot项目，我用的Idea17。本文主要讲的是如何利用Maven对项目进行打包，生成可执行的jar包，至于如何用Springboot进行开发，网上也有许多入门教程，改天我也会写一下我的Springboot学习记录。">
-<meta name="twitter:image" content="http://cainsyake.github.io/2017/07/09/idea搭建maven/1.jpg">
+<meta name="twitter:title" content="vue v-if判断数组中元素的处理">
+<meta name="twitter:description" content="我的vue版本为2.8为了实现评论回复的功能，我用v-for遍历了每一条评论。然后每条评论里面都有一个div放回复(reply)的输入框和按钮，并用v-if控制这个div的显示。 大概逻辑如下：点击回复按钮 -&amp;gt; this.allowReply[index] = true -&amp;gt; 显示回复div">
 
 
 
@@ -118,13 +108,13 @@
 
 
 
-  <link rel="canonical" href="http://cainsyake.github.io/2017/07/09/idea搭建maven/"/>
+  <link rel="canonical" href="http://cainsyake.github.io/2017/12/17/vue-v-if判断数组中元素的处理/"/>
 
 
 
 
 
-  <title>Idea中打包maven项目 | Bobo's Blog</title>
+  <title>vue v-if判断数组中元素的处理 | Bobo's Blog</title>
   
 
 
@@ -241,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cainsyake.github.io/2017/07/09/idea搭建maven/">
+    <link itemprop="mainEntityOfPage" href="http://cainsyake.github.io/2017/12/17/vue-v-if判断数组中元素的处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bobo">
@@ -258,7 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Idea中打包maven项目</h1>
+          <h1 class="post-title" itemprop="name headline">vue v-if判断数组中元素的处理</h1>
         
 
         <div class="post-meta">
@@ -270,8 +260,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T12:29:30+08:00">
-                2017-07-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-17T16:01:17+08:00">
+                2017-12-17
               </time>
             
 
@@ -308,10 +298,12 @@
       
 
       
-        <p>这个是一个利用Maven构建的<strong>Springboot</strong>项目，我用的<strong>Idea17</strong>。<br>本文主要讲的是如何利用Maven对项目进行打包，生成可执行的jar包，至于如何用Springboot进行开发，网上也有许多入门教程，改天我也会写一下我的Springboot学习记录。<br><a id="more"></a><br>首先要打开Maven Project工具栏，点击菜单栏中的<strong>View</strong>，在<strong>Tool Windows</strong>中找到<strong>Maven Project</strong>，点击后即可在右侧看到Maven Project工具栏。<br><img src="/2017/07/09/idea搭建maven/1.jpg" alt=""></p>
-<p>在<strong>Lifecycle-clean</strong>处右键，点击Run Maven Build<br><img src="/2017/07/09/idea搭建maven/2.jpg" alt=""><br><img src="/2017/07/09/idea搭建maven/3.jpg" alt=""></p>
-<p>然后选择<strong>install</strong>右键点击Run Maven Build<br><img src="/2017/07/09/idea搭建maven/4.jpg" alt=""><br><img src="/2017/07/09/idea搭建maven/5.jpg" alt=""><br>打包成功后即可在<strong>target</strong>目录下找到打包后的jar包<br><img src="/2017/07/09/idea搭建maven/6.jpg" alt=""><br>为了测试，我把jar包复制到F盘根目录下。并在CMD中运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; java -jar psns-0.0.1-SNAPSHOT.jar</div></pre></td></tr></table></figure></p>
-<p><img src="/2017/07/09/idea搭建maven/7.jpg" alt=""><br>运行后，看到熟悉的Spring标志，就成功一半啦。<br>在日志中可以看到<strong>Tomcat started on port(s):8080 (http)</strong><br>这表明该服务成功运行在8080端口上。<br><img src="/2017/07/09/idea搭建maven/9.jpg" alt=""><br>最后打开浏览器，访问<a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a><br><img src="/2017/07/09/idea搭建maven/8.jpg" alt=""><br>至此成功结束此次打包测试。</p>
+        <p>我的vue版本为2.8<br>为了实现评论回复的功能，我用v-for遍历了每一条评论。然后每条评论里面都有一个div放<strong>回复</strong>(reply)的输入框和按钮，并用v-if控制这个div的显示。</p>
+<p>大概逻辑如下：<br>点击<strong>回复按钮</strong> -&gt; this.allowReply[index] = true -&gt; 显示<strong>回复div</strong><br><a id="more"></a><br>但在实践中发现即便将对应的控制变量赋值为true后，对应的<strong>回复div</strong>还是没有显示出来。<br>经过搜索，发现了差不多的情况，<a href="https://stackoverflow.com/questions/41580617/vuejs-v-if-arrayindex-is-not-working" target="_blank" rel="external">点击这里查看问题</a></p>
+<p>看了解决办法后，我使用<strong>splice()函数</strong>后，就生效了，但还是遇到了一些<strong>Bug</strong>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.allowReply.splice(index, <span class="number">1</span>, <span class="literal">true</span>);  <span class="comment">//似乎这样可将allowReply数组中下标为index处的值改为true</span></div></pre></td></tr></table></figure></p>
+<p>当index<strong>大于0</strong>时，true会被插入allowReply[0]，而不是allowReply[index]上。</p>
+<p>为了解决这个问题，我在获取评论数据后，把allowReply用false填充满，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.commentData.length; i++) &#123;</div><div class="line">    <span class="keyword">this</span>.allowReply.push(<span class="literal">false</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>之后再执行splice函数对allowReply中的元素进行操作时，便不会出现异常，但这也增加了性能消耗。<br>希望能尽快找到更好的解决办法。</p>
 
       
     </div>
@@ -336,8 +328,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/09/Win10下搭建Hexo/" rel="next" title="Windows10搭建Hexo并部署至github page">
-                <i class="fa fa-chevron-left"></i> Windows10搭建Hexo并部署至github page
+              <a href="/2017/12/14/通过js实现Hibernate的持久化对象复制/" rel="next" title="通过js实现Hibernate的持久化对象复制">
+                <i class="fa fa-chevron-left"></i> 通过js实现Hibernate的持久化对象复制
               </a>
             
           </div>
@@ -345,10 +337,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/11/ERP沙盘运行起来是什么样子的/" rel="prev" title="探索ERP系列(一) ERP沙盘运行起来是什么样子的">
-                探索ERP系列(一) ERP沙盘运行起来是什么样子的 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
